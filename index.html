@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <title>Bootstrap Visualization Dashboard</title>
+
+<!-- STYLE SECTION ----------------------------------------------------- -->
+
+<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/yeti/bootstrap.min.css" rel="stylesheet" integrity="sha384-w6tc0TXjTUnYHwVwGgnYyV12wbRoJQo9iMlC2KdkdmVvntGgzT9jvqNEF/uKaF4m" crossorigin="anonymous">
+<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+<!-- NAV BAR ----------------------------------------------------- -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="https://TimStOnge.github.io/index.html">Latitude</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Plots
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="https://TimStOnge.github.io/maxtemp.html">Max Temperature</a>
+                <a class="dropdown-item" href="https://TimStOnge.github.io/humidity.html">Humidity</a>
+                <a class="dropdown-item" href="https://TimStOnge.github.io/cloudiness.html">Cloudiness</a>
+                <a class="dropdown-item" href="https://TimStOnge.github.io/windspeed.html">Wind Speed</a>
+              <li class="nav-item">
+                  <a class="nav-link" href="https://TimStOnge.github.io/comparisons.html">Comparison</a>
+                </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="https://TimStOnge.github.io/data.html">Data</a>
+              </li>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+<!-- CONTENT CONTAINER ----------------------------------------------------- -->
+
+  <div class="container">
+
+      <div class="row">
+          <div class="col-md-12"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+            <h1><br>Summary: Latitude vs. X<br></h1><h5><p><img src="https://timstonge.github.io/maxtemp.png" alt="Chart of latitude vs. maximum temperature" width="35%" align=left>
+              <br>The purpose of this project was to analyze how weather changes as you get closer to the Equator. To accomplish this analysis, we first pulled data from the OpenWeather API to assemble a dataset on over 500 cities.</p>
+              <p>After assembling the dataset, we used Matplotlib to plot various aspects of the weather vs. latitude. Factors we looked at included: temperature, cloudiness, wind speed, and humidity. This site provides the source data and visualizations created as part of the analysis, as well as explanations and descriptions fo any trends and correlations witnessed.</p>
+              </h5>
+          </div>
+
+        <div class="col-md-4 bg-success text-white">
+            <h2><br>Visualizations<br></h2>
+            <div class="row"> 
+              <div class="col-md-6">
+              <a href="https://TimStOnge.github.io/maxtemp.html"><img src="https://timstonge.github.io/maxtemp.png" alt="Chart of latitude vs. maximum temperature" width="100%"></a><h1 align="left"></h1>
+              </div>
+              <div class="col-md-6">
+              <a href="https://TimStOnge.github.io/humidity.html"><img src="https://timstonge.github.io/humidity.png" alt="Chart of latitude vs. humidity" width="100%"></a><h1 align="right"></h1>
+              </div>
+           <div class="row">
+              <div class="col-md-6">
+                  <a href="https://TimStOnge.github.io/cloudiness.html"><img src="https://timstonge.github.io/cloudiness.png" alt="Chart of latitude vs. cloudiness" width="90%"></a><h1 align="left"></h1>
+                  </div>
+                  <div class="col-md-6">
+                      <a href="https://TimStOnge.github.io/windspeed.html"><img src="https://timstonge.github.io/windspeed.png" alt="Chart of latitude vs. wind speed" width="90%"></a><h1 align="right"></h1>
+                  </div>
+          </div> </div>
+        </div>
+</div>
+
+</body>
+
+</html>
