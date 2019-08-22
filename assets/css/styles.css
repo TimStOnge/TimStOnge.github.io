@@ -4,7 +4,8 @@ html {
 body {
   font-size: 15px;
   font-size: 0.9375rem;
-  font-family: "Open sans", Helvetica, Arial, sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+  /* font-family: "Open sans", Helvetica, Arial, sans-serif; */
   color: #666666;
   padding: 0;
 }
@@ -192,15 +193,16 @@ h5 {
   font-size: 1.25rem;
 }
 a {
-  color: #bd1550;
+  color: #2b7a78;
 }
 a:hover {
-  color: #e93675;
+  color: #3aafa9;
 }
 .lead {
   font-weight: 300;
-  font-size: 21px;
-  font-size: 1.3125rem;
+  font-size: 26px;
+  /* font-size: 1.3125rem; */
+  color: #17252A;
 }
 .text-msg {
   line-height: 1.7em;
@@ -225,7 +227,7 @@ a:hover {
 
 **********************************************************************/
 #head {
-  background: #f4f4f4 url(../images/Acadia_min_optimized.jpg) top center;
+  background: #3AAFA9/* #1D2951  url(../images/Acadia_min_optimized.jpg) */ top center;
   background-size: cover;
   color: #7C7C7C;
   padding: 30px 0 35px 0;
@@ -239,10 +241,10 @@ a:hover {
   margin: 0 auto;
 }
 #head .title {
-  font-family: Alice, Georgia, serif;
-  font-size: 49px;
+  font-family: 'DM Serif Text', serif;
+  font-size: 50px;
   font-size: 3.0625rem;
-  color: #ffffff;
+  color: #feffff;
   /*background-color: green;*/
   /*background: rgba(0, 0, 0, 0.6);*/
 }
@@ -252,11 +254,11 @@ a:hover {
 }
 #head .tagline {
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   font-size: 0.875rem;
   line-height: 1.2em;
-  color: #ffffff;
-  margin: 5px 0 0;
+  color: #17252A;
+  margin: 5px 0 0 0;
 }
 #head .tagline b {
   font-weight: normal;
@@ -265,7 +267,7 @@ a:hover {
   color: #5E5E5E;
 }
 .home #head {
-  padding: 90px 0;
+  padding: 15px 0;
 }
 .home #head .title {
   font-size: 49px;
@@ -453,9 +455,9 @@ img {
   font-size: 12px;
   font-size: 0.75rem;
   text-transform: uppercase;
-  text-shadow: 0 1px 0px #780d33;
-  background: #bd1550;
-  color: white;
+  text-shadow: 0 1px 0px #2b7a78;
+  background: #3aafa9;
+  color: #feffff;
 }
 .thumbnail img {
   width: 100%;
@@ -521,6 +523,7 @@ img {
 .entry-title span {
   display: inline-block;
   position: relative;
+  color: #17252a
 }
 .section-title span:before,
 .entry-title span:before,
