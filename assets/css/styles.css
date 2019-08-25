@@ -5,7 +5,7 @@ body {
   font-size: 15px;
   font-size: 0.9375rem;
   font-family: 'Source Sans Pro', sans-serif;
-  color: #666666;
+  color: #17252A;
   padding: 0;
 }
 .topspace {
@@ -134,6 +134,14 @@ body {
 .nav-side > li.active > a {
   color: #bd1550;
 }
+.list-group-item {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #17252A;
+  font-size: 15px;
+  border-color: #3aafa9;
+}
+
+
 /*********************************************************************
 
 
@@ -498,6 +506,20 @@ img {
   color: #000000;
   background: none;
 }
+
+.custom-header{
+  text-align: center;
+  color: #17252a;
+  font-size: 40px;
+  font-family: 'DM Serif Text', serif;
+}
+.custom-subheader{
+  text-align: center;
+  color: #17252a;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15px
+
+}
 /*********************************************************************
 
 
@@ -607,7 +629,7 @@ img {
   -moz-background-clip: padding;
   border-radius: 3px;
   background-clip: padding-box;
-  font-family: "Open sans", Helvetica, Arial, sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-style: normal;
   font-weight: normal;
   text-decoration: none;
