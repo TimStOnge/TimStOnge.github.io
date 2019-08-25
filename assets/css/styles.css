@@ -5,7 +5,6 @@ body {
   font-size: 15px;
   font-size: 0.9375rem;
   font-family: 'Source Sans Pro', sans-serif;
-  /* font-family: "Open sans", Helvetica, Arial, sans-serif; */
   color: #666666;
   padding: 0;
 }
@@ -42,7 +41,7 @@ body {
   -moz-background-clip: padding;
   border-radius: 0;
   background-clip: padding-box;
-  font-family: "Open sans", Helvetica, Arial, sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-weight: 300;
   text-transform: uppercase;
 }
@@ -67,42 +66,42 @@ body {
 }
 .navbar-default {
   background-color: #ffffff;
-  border-color: #cccccc;
+  border-color: #3aafa9;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #454545;
+  color: #17252a;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #000000;
-  background-color: #ffffff;
+  color: #feffff;
+  background-color: #3aafa9;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  color: #000000;
+  color: #17252a;
   background-color: #ffffff;
 }
 .navbar-default .dropdown ul.dropdown-menu > li > a {
-  color: #454545;
+  color: #17252a;
 }
 .navbar-default .dropdown ul.dropdown-menu > li > a:hover {
-  background-color: #eeeeee;
+  background-color: #3aafa9;
   color: #000000;
 }
 .navbar-default .navbar-toggle {
-  border-color: #666666;
+  border-color: #3aafa9;
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
   background-color: #ffffff;
 }
 .navbar-default .navbar-toggle .icon-bar {
-  background-color: #333333;
+  background-color: #3aafa9;
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
-  border-color: #cccccc;
+  border-color: #3aafa9;;
 }
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
@@ -168,9 +167,9 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Open sans", Helvetica, Arial, sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-weight: 400;
-  color: #333333;
+  color: #17252A
 }
 h1 {
   font-size: 40px;
@@ -227,7 +226,7 @@ a:hover {
 
 **********************************************************************/
 #head {
-  background: #3AAFA9/* #1D2951  url(../images/Acadia_min_optimized.jpg) */ top center;
+  background: #3AAFA9 top center;
   background-size: cover;
   color: #7C7C7C;
   padding: 30px 0 35px 0;
@@ -250,7 +249,7 @@ a:hover {
 }
 #head .title a {
   text-decoration: none;
-  color: #333333;
+  color: #17252A;
 }
 #head .tagline {
   display: block;
@@ -259,6 +258,9 @@ a:hover {
   line-height: 1.2em;
   color: #17252A;
   margin: 5px 0 0 0;
+}
+#head .widget-body a:hover{ /*HERE*/
+  opacity: .5;
 }
 #head .tagline b {
   font-weight: normal;
@@ -278,6 +280,7 @@ a:hover {
   font-size: 1rem;
   margin: 15px 0 0;
 }
+
 /*********************************************************************
 
 
@@ -293,7 +296,7 @@ img {
   font-size: 0.75rem;
   text-decoration: none;
   text-transform: uppercase;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   color: #333;
   -webkit-border-radius: 0px;
   -webkit-background-clip: padding-box;
@@ -405,7 +408,7 @@ img {
   padding: 0;
   text-align: center;
   text-decoration: none;
-  color: #333;
+  color: #17252A;
 }
 .thumbnail .img {
   display: block;
@@ -775,9 +778,9 @@ footer.entry-meta .meta-in {
   margin: 0 0 20px;
 }
 #underfooter {
-  background: #191919;
+  background: #2b7a72;
   padding: 15px 0;
-  color: #777;
+  color: #17252a;
   font-size: 12px;
 }
 #underfooter a {
