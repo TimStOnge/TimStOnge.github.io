@@ -23,10 +23,12 @@
 </head>
 <body>
 
+<link href="https://fonts.googleapis.com/css?family=DM+Serif+Text&display=swap" rel="stylesheet">
+
 <header id="header">
 	<div id="head" class="parallax" parallax-speed="1">
 		<h1 id="logo" class="text-center">
-			<span class="title" style= "background-color: rgba(0, 0, 0, 0.3)"><strong>Tim St. Onge</strong></span>
+			<span class="title"><strong>Tim St. Onge</strong></span>
 		</h1>
 	</div>
 
@@ -34,13 +36,13 @@
 		<div class="container-fluid">
 
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
 			</div>
 
 			<div class="navbar-collapse collapse">
 
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="https://timstonge.github.io/">Home</a></li>
+					<li><a href="https://timstonge.github.io/">Home</a></li>
 					<li><a href="https://timstonge.github.io/about.html">Resume</a></li>
 					<li><a href="https://timstonge.github.io/blog.html">Blog</a></li>
 				</ul>
@@ -59,7 +61,7 @@
 			<!-- Article main content -->
 			<article class="col-sm-8 maincontent">
 				<header class="page-header">
-					<h1 class="page-title">Congressional Cartography Program</h1>
+					<h2 class="custom-header">Congressional Cartography Program</h2>
 				</header>
 
                 <p><img src="assets/images/congressionalcartography.jpg" alt=""></p>
@@ -71,12 +73,17 @@
 			<!-- /Article -->
 
 			<!-- Sidebar -->
-			<aside class="col-md-4 sidebar sidebar-left">
+			<aside class="col-md-4 sidebar sidebar-right">
 
-				<div class="widget">
-					<h4>Library of Congress</h4>
-					<p>2015 - Present</p>
-				</div>
+                    <div class="widget">
+							<ul class="list-group">
+									<li class="list-group-item pull-left">
+										<img src="assets/images/loc_icon.png" style="width:100px;height:80px;padding-right:20px" class="pull-left">
+										<h4 class="custom-subsubheader">Library of Congress</h4>
+										<p><strong>2015 - Present</strong></p>
+									</li>
+							</ul>
+						</div>
 				
 			</aside>			
 			<!-- /Sidebar -->

@@ -23,10 +23,12 @@
 </head>
 <body>
 
+<link href="https://fonts.googleapis.com/css?family=DM+Serif+Text&display=swap" rel="stylesheet">
+
 <header id="header">
 	<div id="head" class="parallax" parallax-speed="1">
 		<h1 id="logo" class="text-center">
-			<span class="title" style= "background-color: rgba(0, 0, 0, 0.3)"><strong>Tim St. Onge</strong></span>
+			<span class="title"><strong>Tim St. Onge</strong></span>
 		</h1>
 	</div>
 
@@ -34,13 +36,13 @@
 		<div class="container-fluid">
 
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
 			</div>
 
 			<div class="navbar-collapse collapse">
 
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="https://timstonge.github.io/">Home</a></li>
+					<li><a href="https://timstonge.github.io/">Home</a></li>
 					<li><a href="https://timstonge.github.io/about.html">Resume</a></li>
 					<li><a href="https://timstonge.github.io/blog.html">Blog</a></li>
 				</ul>
@@ -52,46 +54,51 @@
 
 <main id="main">
 
-	<div class="container">
-
-		<div class="row topspace">
-			
-			<!-- Article main content -->
-			<article class="col-sm-8 maincontent">
-				<header class="page-header">
-					<h1 class="page-title">DC Crime Data Dashboard</h1>
-				</header>
-
-                <p><img src="assets/images/dccrimedashboard1.png" alt=""></p>
-                <br>
-                <p>The application can be viewed <a href="https://justice-league-district.herokuapp.com/" target="_blank"><strong>HERE</strong></a>, with the GitHub repo available <a href="https://github.com/jpw24/project-3-team2" target="_blank"><strong>HERE</strong></a></p>
-                <br>
-                <p>Jimmy White, Reena Desai, Mario Cosby, and myself built the DC Crime Data Dashboard for our GW Data Analytics Boot Camp final project. This web application allows for the visualization of spatial and temporal trends in five years of violent crime data for Washington, D.C. The application consists of an interactive map for displaying demographic data overlaid with crime by type and D.C. ward, a series of "time wheels" visualizing time-of-day frequencies in crime, a line graph for comparing crime frequencies by month, and an exploration of machine learning and regression techniques to investigate possible explanations of crime patterns. My work on this project focused on back-end data processing, configuring the interactive map, and performing the regression analyses.</p>
-                <br>
-                <p><img src="assets/images/dccrimedashboard2.png" alt=""></p>
-				<p>On the back-end, the application uses AWS-deployed databases of crime and demographic data. Data processing steps are performed in Python and documented in two <a href="https://github.com/jpw24/project-3-team2/blob/master/Socioecon_Data_Load.ipynb" target="_blank">Jupyter</a> <a href="https://github.com/jpw24/project-3-team2/blob/master/ViolentCrime_SummaryStats.ipynb" target="_blank">Notebooks</a>. SQL Alchemy and Flask are used to establish and send data to various endpoints in the application. Starting from a Bootstrap template, the front-end consists of interactive visualizations created with D3, Leaflet, Moment.js, and Chart.js JavaScript libraries. The full application is deployed to Heroku.</p>
-                <br>
-                <p><img src="assets/images/dccrimedashboard3.png" alt=""></p>
-                <br>
-				
-			</article>
-			<!-- /Article -->
-
-			<!-- Sidebar -->
-			<aside class="col-md-4 sidebar sidebar-left">
-
-				<div class="widget">
-					<h4>GW Data Analytics Bootcamp</h4>
-					<p>2019</p>
-				</div>
-				
-			</aside>			
-			<!-- /Sidebar -->
-			
-		</div>
-	</div>	<!-- /container -->
-	
-</main>
+        <div class="container">
+    
+            <div class="row topspace">
+                
+                <!-- Article main content -->
+                <article class="col-sm-8 maincontent">
+                    <header class="page-header">
+                        <h2 class="custom-header">DC Crime Dashboard</h2>
+                    </header>
+    
+                    <p><img src="assets/images/dccrimedashboard1.png" alt=""></p>
+                    <br>
+                    <p>The application can be viewed <a href="https://justice-league-district.herokuapp.com/" target="_blank"><strong>HERE</strong></a>, with the GitHub repo available <a href="https://github.com/jpw24/project-3-team2" target="_blank"><strong>HERE</strong></a>.</p>
+                    <br>
+                    <p>Jimmy White, Reena Desai, Mario Cosby, and myself built the DC Crime Data Dashboard for our GW Data Analytics Boot Camp final project. This web application allows for the visualization of spatial and temporal trends in five years of violent crime data for Washington, D.C. The application consists of an interactive map for displaying demographic data overlaid with crime by type and D.C. ward, a series of "time wheels" visualizing time-of-day frequencies in crime, a line graph for comparing crime frequencies by month, and an exploration of machine learning and regression techniques to investigate possible explanations of crime patterns. My work on this project focused on back-end data processing, configuring the interactive map, and performing the regression analyses.</p>
+                    <br>
+                    <p><img src="assets/images/dccrimedashboard2.png" alt=""></p>
+                    <p>On the back-end, the application uses AWS-deployed databases of crime and demographic data. Data processing steps are performed in Python and documented in two <a href="https://github.com/jpw24/project-3-team2/blob/master/Socioecon_Data_Load.ipynb" target="_blank">Jupyter</a> <a href="https://github.com/jpw24/project-3-team2/blob/master/ViolentCrime_SummaryStats.ipynb" target="_blank">Notebooks</a>. SQL Alchemy and Flask are used to establish and send data to various endpoints in the application. Starting from a Bootstrap template, the front-end consists of interactive visualizations created with D3, Leaflet, Moment.js, and Chart.js JavaScript libraries. The full application is deployed to Heroku.</p>
+                    <br>
+                    <p><img src="assets/images/dccrimedashboard3.png" alt=""></p>
+                    <br>
+                    
+                </article>
+                <!-- /Article -->
+    
+                <!-- Sidebar -->
+                <aside class="col-md-4 sidebar sidebar-left">
+    
+                    <div class="widget">
+                        <ul class="list-group">
+                                <li class="list-group-item pull-left">
+                                    <img src="assets/images/gw_icon.png" style="width:100px;height:80px;padding-right:20px" class="pull-left">
+                                    <h4 class="custom-subsubheader">GW Data Analytics Boot Camp</h4>
+                                    <p><strong>2018 - 2019</strong></p>
+                                </li>
+                        </ul>
+                    </div>
+                    
+                </aside>			
+                <!-- /Sidebar -->
+                
+            </div>
+        </div>	<!-- /container -->
+        
+    </main>
 
 <footer id="underfooter">
 	<div class="container">
