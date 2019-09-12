@@ -6,7 +6,7 @@
 	<meta name="description" content="">
 	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
 	
-	<title>Tim St. Onge - DC Crime Dashboard</title>
+	<title>Tim St. Onge - Landcover Classification</title>
 
 	<!-- <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
 	<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/> -->
@@ -69,21 +69,18 @@
                 <!-- Article main content -->
                 <article class="col-sm-8 maincontent">
                     <header class="page-header">
-                        <h2 class="custom-header">DC Crime Dashboard</h2>
+                        <h2 class="custom-header">Stepwise Landcover Classification</h2>
                     </header>
 
 					<div class="your-class">
-						<div><img src="assets/images/dccrimedashboard1.png"></div>
-						<div><img src="assets/images/dccrimedashboard2.png"></div>
-						<div><img src="assets/images/dccrimedashboard3.png"></div>
+						<div><img src="assets/images/stepwise_landcover1.png"></div>
+						<div><img src="assets/images/stepwise_landcover2.png"></div>
+						<div><img src="assets/images/stepwise_landcover3.png"></div>
+						<div><img src="assets/images/stepwise_landcover4.png"></div>
 					</div>
 
                     <br>
-                    <p>The application can be viewed <a href="https://justice-league-district.herokuapp.com/" target="_blank"><strong>HERE</strong></a>, with the GitHub repo available <a href="https://github.com/jpw24/project-3-team2" target="_blank"><strong>HERE</strong></a>.</p>
-                    <br>
-                    <p>Jimmy White, Reena Desai, Mario Cosby, and myself built the DC Crime Data Dashboard for our GW Data Analytics Boot Camp final project. This web application allows for the visualization of spatial and temporal trends in five years of violent crime data for Washington, D.C. The application consists of an interactive map for displaying demographic data overlaid with crime by type and D.C. ward, a series of "time wheels" visualizing time-of-day frequencies in crime, a line graph for comparing crime frequencies by month, and an exploration of machine learning and regression techniques to investigate possible explanations of crime patterns. My work on this project focused on back-end data processing, configuring the interactive map, and performing the regression analyses.</p>
-                    <br>
-                    <p>On the back-end, the application uses AWS-deployed databases of crime and demographic data. Data processing steps are performed in Python and documented in two <a href="https://github.com/jpw24/project-3-team2/blob/master/Socioecon_Data_Load.ipynb" target="_blank">Jupyter</a> <a href="https://github.com/jpw24/project-3-team2/blob/master/ViolentCrime_SummaryStats.ipynb" target="_blank">Notebooks</a>. SQL Alchemy and Flask are used to establish and send data to various endpoints in the application. Starting from a Bootstrap template, the front-end consists of interactive visualizations created with D3, Leaflet, Moment.js, and Chart.js JavaScript libraries. The full application is deployed to Heroku.</p>
+                    <p>For my final research project in the "Advanced Remote Sensing" course, I performed a "proof of concept" study which experimented with a land cover classification scheme that relied on a decision tree structure and multiple data types to produce a highly accurate land cover map. Focusing on three locations within Worcester, MA, the study incorporated Worldview-2 imagery, LIDAR data, shapefiles, and orthoimagery. The methodology was generally based on thresholds of the Normalized Difference Vegetation Index (NDVI) to delineate vegetation, LIDAR-derived height calculations to distinguish grass and shrubbery from forest cover, and an automated Classification Tree Analysis (CTA) to specially classify areas in shadow cover in the Worldview-2 imagery. The resulting land cover maps appear to make geographic sense, and a quantitative accuracy assessment based on 3,000 sample points and comparisons to orthoimagery further supports the competence of this methodology. This study contributes to remote sensing research into stepwise classification methodologies and efforts to harness multiple earth-observing data types in the production of highly-accurate land cover maps.</p>
 					<br>
 					
 					
@@ -97,9 +94,9 @@
                     <div class="widget">
                         <ul class="list-group">
                                 <li class="list-group-item pull-left">
-                                    <img src="assets/images/gw_icon.png" style="width:100px;height:80px;padding-right:20px" class="pull-left">
-                                    <h4 class="custom-subsubheader">GW Data Analytics Boot Camp</h4>
-                                    <p><strong>2018 - 2019</strong></p>
+                                    <img src="assets/images/clark_icon.png" style="width:100px;height:80px;padding-right:20px" class="pull-left">
+									<h4 class="custom-subsubheader">Clark University</h4>
+                                    <p><strong>2015</strong></p>
                                 </li>
                         </ul>
                     </div>

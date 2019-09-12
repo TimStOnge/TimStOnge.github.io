@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)http://timstonge.weebly.com/uploads/2/6/2/4/26245001/finalscript.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>.gm-control-active>img{box-sizing:content-box;display:none;left:50%;pointer-events:none;position:absolute;top:50%;transform:translate(-50%,-50%)}.gm-control-active>img:nth-child(1){display:block}.gm-control-active:hover>img:nth-child(1),.gm-control-active:active>img:nth-child(1){display:none}.gm-control-active:hover>img:nth-child(2),.gm-control-active:active>img:nth-child(3){display:block}
+</style><link type="text/css" rel="stylesheet" href="./finalscript_files/css"><style>.gm-ui-hover-effect{opacity:.6}.gm-ui-hover-effect:hover{opacity:1}
+</style><style>.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px;box-sizing:border-box}
+</style><style>@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style><style>.dismissButton{background-color:#fff;border:1px solid #dadce0;color:#1a73e8;border-radius:4px;font-family:Roboto,sans-serif;font-size:14px;height:36px;cursor:pointer;padding:0 24px}.dismissButton:hover{background-color:rgba(66,133,244,0.04);border:1px solid #d2e3fc}.dismissButton:focus{background-color:rgba(66,133,244,0.12);border:1px solid #d2e3fc;outline:0}.dismissButton:hover:focus{background-color:rgba(66,133,244,0.16);border:1px solid #d2e2fd}.dismissButton:active{background-color:rgba(66,133,244,0.16);border:1px solid #d2e2fd;box-shadow:0 1px 2px 0 rgba(60,64,67,0.3),0 1px 3px 1px rgba(60,64,67,0.15)}.dismissButton:disabled{background-color:#fff;border:1px solid #f1f3f4;color:#3c4043}
+</style><style>.gm-style-pbc{transition:opacity ease-in-out;background-color:rgba(0,0,0,0.45);text-align:center}.gm-style-pbt{font-size:22px;color:white;font-family:Roboto,Arial,sans-serif;position:relative;margin:0;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}
+</style><style>.gm-style img{max-width: none;}.gm-style {font: 400 11px Roboto, Arial, sans-serif; text-decoration: none;}</style>
+  
+    <style type="text/css">
+	
+
+#header {
+font-family:Georgia, serif;
+width:995px;
+height:93px;
+position:relative;
+background:#C33;
+background:url(http://www.clarku.edu/assets2011/images/header_bg.jpg);
+	}
+#wrapper{
+width: 1032px;
+margin: 0 auto;
+padding-top: 0px;
+;
+}
+#innerwrapper {
+width: 1032px;
+min-height: 100px;
+padding-bottom: 0px;
+
+}
+
+input, span { background-color : red }
+input:checked, input:checked + span { background-color : lime}
+#nav {
+    line-height:30px;
+    background-color:#F6CECE;
+	
+    height:750px;
+    width:270px;
+    float:left;
+    padding:0px; 
+}
+#map_canvas{
+height:750px;
+    width:70.3%;
+	
+    
+}
+#hlink{
+list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+
+}
+li {
+    float: right;
+}
+#title{
+color:white;
+position:relative;
+
+}
+#navtitle{
+font-family:Georgia, serif;
+}
+#title:link, title:visited {
+    display: block;
+    width: 120px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #B40404;
+    text-align: center;
+    padding: 4px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+#title:hover, title:active {
+    background-color: #FF0000;
+}
+
+#llink: hover, llink:active{
+background-color:#D8D8D8 ;
+}
+#llink.active{
+background-color:#D8D8D8 ;
+}
+
+
+#footer {
+	width:990px;
+    background-color:#B40404;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:1px; 
+}
+#bottom{
+
+color:black;
+text-decoration: none;
+
+}
+#bottom:hover,bottom:active{
+font-weight: bold;
+}
+label{
+font-family:Georgia, serif;
+}
+
+#qlinks{
+
+font-family:Georgia, serif;
+}
+</style>
+<script src="./finalscript_files/js"></script>
+    <script>
+var map;
+var clarku = new google.maps.LatLng(42.251318, -71.823045);
+var clark_lib=new google.maps.LatLng(42.252345, -71.821374);
+var clark_ris=new google.maps.LatLng(42.251825, -71.822975);
+var clark_admin=new google.maps.LatLng(42.250670, -71.823173);
+var clark_sport=new google.maps.LatLng(42.250622, -71.826521);
+var currentlayer=null;
+var MY_MAPTYPE_ID = 'custom_style';
+
+function initialize() {
+  var mainLayer;
+  var academicLayer;
+  var libraryLayer;
+  var athleticsLayer;
+  var blueLightLayer;
+  var escortLayer;
+  var parkingLayer;
+  
+  //ClarkU Style
+  var featureOpts = [
+    {
+      featureType: 'administrative.land_parcel',
+      stylers: [
+        { visibility: 'off' }
+      ]
+    },
+    {
+      featureType: 'road',
+	  elementType: 'geometry.stroke',
+      stylers: [
+        { visibility: 'on' },
+		{ color: '#ce3234' }
+      ]
+    },
+	{
+	  featureType: 'road.local',
+	  elementType: 'geometry.stroke',
+	  stylers: [
+	    { visibility: 'on' },
+		{ weight: '0.5' }
+	  ]
+	},
+	{
+	  featureType: 'landscape.man_made',
+	  elementType: 'geometry.fill',
+	  stylers: [
+	    { color: '#E9E9E9' }
+	  ]
+	},
+	{
+	  featureType: 'poi.school',
+	  stylers: [
+	    { visibility: 'off' }
+	  ]
+	}
+  ];
+// default map settings
+  var mapOptions = {
+    zoom: 16,
+    center: clarku,
+    mapTypeControlOptions: {
+      mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
+    },
+    mapTypeId: MY_MAPTYPE_ID,
+		panControl: false,
+					streetViewControl: false,
+					zoomControl: true,
+					zoomControlOptions:{
+					style:google.maps.ZoomControlStyle.SMALL}
+					
+  };
+
+ //base layer of clarkU buildings (import fusion table) 
+  mainLayer = new google.maps.FusionTablesLayer({
+      map: map,
+      heatmap: { enabled: false },
+      query: {
+        select: "col2",
+        from: "1qQg9hah4ToiEo5VTo5ibRsaSgHj9pJK1VI44elJb",
+        where: ""
+      },
+      options: {
+        styleId: 2,
+        templateId: 2
+      }
+    });
+	
+	map = new google.maps.Map(document.getElementById('map_canvas'),
+      mapOptions);
+	  
+	 
+  mainLayer.setMap(map);
+  
+  
+    mainLayer.setMap(map);
+//Embed a "HOME" button on the map canvas	
+  var homeControlDiv = document.createElement('div');
+
+			// Call the HomeControl button to power the button
+  			var homeControl = new HomeControl(homeControlDiv, map);
+
+  			//homeControlDiv.index = 1;
+  			// Put the button in the upper right corner
+  			map.controls[google.maps.ControlPosition.LEFT_TOP].push(homeControlDiv);
+ //display the ClarkU Style 
+  var styledMapOptions = {
+    name: 'ClarkU Style'
+  };
+
+  var customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
+
+  map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
+   check();
+}
+//importing all fusion table layers (academic, athletics,residence,etc.)
+academicLayer=new google.maps.FusionTablesLayer({
+      map: map,
+      heatmap: { enabled: false },
+      query: {
+        select: "col2",
+        from: "1SOA0bN2QPpAlsLKVAvG7kS3dM7JfIuQ1-vxm_-tX",
+        where: ""
+      },
+      options: {
+        styleId: 2,
+        templateId: 2
+      }
+    });
+
+libraryLayer=new google.maps.FusionTablesLayer({
+      map: map,
+      heatmap: { enabled: false },
+      query: {
+        select: "col2",
+        from: "1tziUwlyjA-qCGnmvlSF0OWklY9rbWlFl_EsIO49R",
+        where: ""
+      },
+      options: {
+        styleId: 2,
+        templateId: 2
+      }
+    });
+	
+	 athleticsLayer=new google.maps.FusionTablesLayer({
+      map: map,
+      heatmap: { enabled: false },
+      query: {
+        select: "col2",
+        from: "1r1HSdE9JI-EB462K0LDJ4m9yZiLYUjTFqAJTEWIq",
+        where: ""
+      },
+      options: {
+        styleId: 2,
+        templateId: 2
+      }
+    });  
+adminLayer = new google.maps.FusionTablesLayer({
+      map: map,
+      heatmap: { enabled: false },
+      query: {
+        select: "col2",
+        from: "168WOIoww8bBa-sraMrEUEfU1SsSzU4aJyYsRTRmU",
+        where: ""
+      },
+      options: {
+        styleId: 2,
+        templateId: 2
+      }
+    });
+residenceLayer = new google.maps.FusionTablesLayer({
+      map: map,
+      heatmap: { enabled: false },
+      query: {
+        select: "col2",
+        from: "1AfUuYtCDVblRMdpZ0yhG7eLZTRIuPr0MdR-HzN1-",
+        where: ""
+      },
+      options: {
+        styleId: 2,
+        templateId: 2
+      }
+    });
+	
+blueLightLayer=new google.maps.FusionTablesLayer({
+      map: map,
+      heatmap: { enabled: false },
+      query: {
+        select: "col2",
+        from: "1r1AV4x4EqnLw1OMy4fPVySi6wImwUOtCKFu5EM97",
+        where: ""
+      },
+      options: {
+        styleId: 2,
+        templateId: 2
+      }
+    });  
+	
+escortLayer=new google.maps.FusionTablesLayer({
+      map: map,
+	  heatmap: { enabled: false },
+      query: {
+        select: "col2",
+        from: "1KwLnTVgVNgTX7NbRvPHvApA0wznf8dSYtGA0-lV-",
+		//from: "1QJMGbptMsRELt6iadSuE8_7yMV6Kql15YCYY7E0H",
+        where: ""
+      },
+      options: {
+        styleId: 2,
+        suppressInfoWindows:true
+      }
+    });  
+ localLayer = new google.maps.FusionTablesLayer({
+      map: map,
+      heatmap: { enabled: false },
+      query: {
+        select: "col0",
+        from: "1mOESgT1y_VdhthMedlTfLHSjaPYe3xoG1HSqzILu",
+        where: ""
+      },
+      options: {
+        styleId: 2,
+        templateId: 2
+      }
+    });
+ parkingLayer = new google.maps.FusionTablesLayer({
+      map: map,
+      heatmap: { enabled: false },
+      query: {
+        select: "col0",
+        from: "1KyYGI4aFVOS2fWjYb0juyZd0YZPph0O2t5F9R0x-",
+        where: ""
+      },
+      options: {
+        styleId: 2,
+        templateId: 2
+      }
+    });
+	
+	
+//create a function for checkbox, selecting different layers	
+	  function check() 
+    {
+
+        if(document.getElementById('academic').checked)
+
+          {academicLayer.setMap(map);
+		   map.setZoom(17);
+		   map.setCenter(clarku);
+		  }
+
+        else 
+
+          {academicLayer.setMap(null);}
+		
+		if(document.getElementById('library').checked)
+
+          {libraryLayer.setMap(map);
+		   map.setZoom(17);
+			map.setCenter(clark_lib);
+		  }
+
+        else 
+
+          {libraryLayer.setMap(null);}
+
+        if(document.getElementById('athletics').checked)
+
+          {athleticsLayer.setMap(map);
+		   map.setZoom(17);
+			map.setCenter(clark_sport);
+		  }
+
+        else 
+
+          {athleticsLayer.setMap(null);}
+		
+		if(document.getElementById('admin').checked)
+
+          {adminLayer.setMap(map);
+		   map.setZoom(18);
+			map.setCenter(clark_admin);
+		  }
+
+        else 
+
+          {adminLayer.setMap(null);}
+		  
+		  
+		 if(document.getElementById('residence').checked)
+
+          {residenceLayer.setMap(map);
+		  
+		     map.setZoom(17);
+			map.setCenter(clark_ris);
+		  }
+
+        else 
+
+          {residenceLayer.setMap(null);}
+		  
+		if(document.getElementById('bluelight').checked)
+
+          {blueLightLayer.setMap(map);
+		  map.setZoom(16);
+  map.setCenter(clarku);
+		  }
+
+        else 
+
+          {blueLightLayer.setMap(null);}
+		  
+		    
+		if(document.getElementById('escort').checked)
+
+          {escortLayer.setMap(map);
+		    map.setZoom(15);
+			map.setCenter(clarku);
+		  }
+
+        else 
+
+          {escortLayer.setMap(null);}
+		  
+		 if(document.getElementById('local').checked)
+
+          {localLayer.setMap(map);
+		  
+		    map.setZoom(15);
+			map.setCenter(clarku);
+		  }
+
+        else 
+
+          {localLayer.setMap(null);}
+
+		 if(document.getElementById('parking').checked)
+
+          {parkingLayer.setMap(map);
+		  
+		    map.setZoom(16);
+			map.setCenter(clarku);
+		  }
+
+        else 
+
+          {parkingLayer.setMap(null);}
+
+        
+    }
+//"HOME" button
+	function HomeControl(controlDiv,map){
+				
+				 controlDiv.style.padding = '5px';
+				 controlDiv.style.height = '50px';
+				 controlDiv.style.width = '50px';
+				
+				 
+		// Set CSS for the control border  				
+  				var controlUI = document.createElement('div');
+  				// Background color
+  				controlUI.style.backgroundColor = 'white';
+  				controlUI.style.borderStyle = 'solid';
+  				controlUI.style.borderWidth = '1px';
+  				// When moving cursor to the button, it is changed to a pointer
+  				controlUI.style.cursor = 'pointer';
+  				// Text will be centered to the div
+  				controlUI.style.textAlign = 'center';
+  				// When moving cursor to the button, title shows up
+  				controlUI.title = 'Click to set the map to Home';
+  				// Append the object
+  				controlDiv.appendChild(controlUI);
+  				
+				
+  				// Set CSS for the control interior  				
+  				var controlText = document.createElement('div');
+  				// Set style for text
+  				controlText.style.fontFamily = 'Arial,sans-serif';
+  				controlText.style.fontSize = '12px';
+  				controlText.style.paddingLeft = '4px';
+  				controlText.style.paddingRight = '4px';
+  				// Set the text as "HOME"
+  				controlText.innerHTML = '<b>HOME</b>';
+  				// Append the object
+  				controlUI.appendChild(controlText);
+
+
+
+  				google.maps.event.addDomListener(controlUI, 'click', function() {
+    			map.setCenter(clarku);
+    			map.setZoom(16);
+  				});
+
+			}	  
+	  
+    </script>
+	 <script type="text/javascript" charset="UTF-8" src="./finalscript_files/common.js"></script><script type="text/javascript" charset="UTF-8" src="./finalscript_files/util.js"></script><script type="text/javascript" charset="UTF-8" src="./finalscript_files/map.js"></script><script type="text/javascript" charset="UTF-8" src="./finalscript_files/controls.js"></script><script type="text/javascript" charset="UTF-8" src="./finalscript_files/onion.js"></script><script type="text/javascript" charset="UTF-8" src="./finalscript_files/stats.js"></script><script type="text/javascript" charset="UTF-8" src="./finalscript_files/ViewportInfoService.GetViewportInfo"></script><script type="text/javascript" charset="UTF-8" src="./finalscript_files/f.txt"></script></head><body onload="initialize()">
+  
+<div id="wrapper">
+<div id="innerwrapper">
+
+<div id="header">
+<h1></h1>
+<ul id="hlink">
+<li><a id="title" href="http://www.clarku.edu/offices.cfm" title="Office">Offices</a></li>
+<li><a id="title" href="http://www.clarku.edu/studentresources.cfm" title="Students">Students</a></li>
+<li><a id="title" href="http://www.clarku.edu/admissions.cfm" title="Admission">Admission</a></li>
+<li><a id="title" href="http://www.clarku.edu/" title="Home">Home</a></li>
+</ul>
+</div>
+ 
+
+<div id="nav">
+<h2 id="navtitle">
+&nbsp;&nbsp;Explore
+
+</h2>
+ <table>
+   
+	  <tbody><tr>
+	  <td>
+      <label id="llink">
+	  <input onclick="check()" type="checkbox" id="academic" class="styled" data-kind="academic">
+	  
+	  
+	  &nbsp;&nbsp;Academic&nbsp;&nbsp;&nbsp;<img src="./finalscript_files/square_academic_cap_graduate_cap_mortarboard-128.png" style="width:20px;height:20px">
+	  </label>
+	  </td>
+      </tr>
+	  
+   
+    <tr>
+	<td>
+      <label id="llink">
+	  <input onclick="check()" type="checkbox" id="library" class="styled"> 
+	  
+	  
+	 &nbsp;&nbsp;Libraries&nbsp;&nbsp;&nbsp;<img src="./finalscript_files/bookshelf.png" style="width:20px;height:20px">
+	  </label>
+	  </td>
+      </tr>
+	  
+	  <tr>
+	  <td>
+      <label id="llink">
+	  <input onclick="check()" type="checkbox" id="residence" class="styled" data-kind="academic">
+	  
+	  
+	  &nbsp;&nbsp;Residence Hall&nbsp;&nbsp;&nbsp;<img src="./finalscript_files/pin.png" style="width:20px;height:20px">
+	  </label>
+	  </td>
+      </tr>
+	  
+	  <tr>
+	  <td>
+      <label id="llink">
+	  <input onclick="check()" type="checkbox" id="admin" class="styled" data-kind="academic">
+	  
+	  
+	  &nbsp;&nbsp;Administration&nbsp;&nbsp;&nbsp;<img src="./finalscript_files/briefcase.png" style="width:20px;height:20px">
+	  </label>
+	  </td>
+      </tr>
+	  
+	  <tr>
+	  <td>
+      <label id="llink">
+	  <input onclick="check()" type="checkbox" id="athletics" value="athletics">
+	  
+	  
+	  &nbsp;&nbsp;Athletics&nbsp;&nbsp;&nbsp;<img src="./finalscript_files/glove.png" style="width:20px;height:20px">
+	  </label>
+	  </td>
+      </tr>
+	  
+	     
+	 
+	  
+	   <tr>
+	  <td>
+      <label id="llink">
+	  <input onclick="check()" type="checkbox" id="bluelight" class="styled" data-kind="academic">
+	  
+	 
+	  &nbsp;&nbsp;Blue Lights&nbsp;&nbsp;&nbsp; <img src="./finalscript_files/marker.png" style="width:20px;height:20px">
+	  </label>
+	  </td>
+      </tr>
+    
+	  <tr>
+	  <td>
+      <label id="llink">
+	  <input onclick="check()" type="checkbox" id="escort" class="styled" data-kind="academic">
+	  
+	  
+	  &nbsp;&nbsp;Safety Escort Extent&nbsp;&nbsp;&nbsp;<img src="./finalscript_files/bus.png" style="width:20px;height:20px">
+	  </label>
+	  </td>
+      </tr>
+	  
+	  
+	  <tr>
+	  <td>
+      <label id="llink">
+	  <input onclick="check()" type="checkbox" id="local" class="styled" data-kind="academic">
+	  
+	  
+	  &nbsp;&nbsp;Points of Interest&nbsp;&nbsp;&nbsp;<img src="./finalscript_files/hamburger.png" style="width:20px;height:20px">
+	  </label>
+	  </td>
+      </tr>
+	  
+	  
+	  <tr>
+	  <td>
+      <label id="llink">
+	  <input onclick="check()" type="checkbox" id="parking" class="styled" data-kind="academic">
+	  
+	  
+	  &nbsp;&nbsp;Parking&nbsp;&nbsp;&nbsp;<img src="./finalscript_files/car.png" style="width:20px;height:20px">
+	  </label>
+	  </td>
+      </tr>
+	  
+  </tbody></table>
+  
+  <h3 id="navtitle">
+&nbsp;&nbsp;Quick Links
+
+</h3>
+<div id="qlinks">&nbsp;&nbsp;
+<img src="./finalscript_files/primary_red_ball.png" style="width:10px;height:10px">
+<a id="bottom" href="https://webapps.clarku.edu/vantracker/index.php">&nbsp;&nbsp;&nbsp;Escort Van Tracker</a>
+
+<a id="bottom" href="http://www.clarku.edu/campusmap/pdfs/Map_with_Legend_10_11_2013.pdf"></a><p><a id="bottom" href="http://www.clarku.edu/campusmap/pdfs/Map_with_Legend_10_11_2013.pdf">&nbsp;&nbsp;
+<img src="./finalscript_files/primary_red_ball.png" style="width:10px;height:10px">&nbsp;&nbsp;&nbsp;Campus Map[PDF]</a>
+<a id="bottom" href="http://www.clarku.edu/offices/police/pdfs/campus-parking-map-clark-university.pdf"></a></p><p><a id="bottom" href="http://www.clarku.edu/offices/police/pdfs/campus-parking-map-clark-university.pdf">&nbsp;&nbsp;
+<img src="./finalscript_files/primary_red_ball.png" style="width:10px;height:10px">&nbsp;&nbsp;&nbsp;Campus Parking Map[PDF]</a>
+</p></div>
+</div>
+
+<div id="map_canvas" style="position: relative; overflow: hidden;"><div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);"><div class="gm-style" style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px;"><div tabindex="0" style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default; touch-action: pan-x pan-y;"><div style="z-index: 1; position: absolute; left: 50%; top: 50%; width: 100%; transform: translate(0px, 0px);"><div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; z-index: 983; transform: matrix(1, 0, 0, 1, -7, -201);"><div style="position: absolute; left: 0px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: 512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 0px; top: 512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: 512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -512px; top: 512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -512px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -512px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -512px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 0px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; z-index: 983; transform: matrix(1, 0, 0, 1, -7, -201);"><div style="position: absolute; left: -256px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="./finalscript_files/vt" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 0px; top: 512px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="./finalscript_files/vt(1)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 0px; top: 256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="./finalscript_files/vt(2)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -256px; top: 256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="./finalscript_files/vt(3)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="./finalscript_files/vt(4)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -256px; top: 512px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="./finalscript_files/vt(5)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 256px; top: 512px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="./finalscript_files/vt(6)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 256px; top: 256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="./finalscript_files/vt(7)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -512px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="./finalscript_files/vt(8)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 256px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="./finalscript_files/vt(9)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -512px; top: -256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="./finalscript_files/vt(10)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -256px; top: -256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="./finalscript_files/vt(11)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -512px; top: 512px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="./finalscript_files/vt(12)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 0px; top: -256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="./finalscript_files/vt(13)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 256px; top: -256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="./finalscript_files/vt(14)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -512px; top: 256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="./finalscript_files/vt(15)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div></div><div class="gm-style-pbc" style="z-index: 2; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; opacity: 0;"><p class="gm-style-pbt"></p></div><div style="z-index: 3; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; touch-action: pan-x pan-y;"><div style="z-index: 4; position: absolute; left: 50%; top: 50%; width: 100%; transform: translate(0px, 0px);"><div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div></div></div></div><iframe aria-hidden="true" frameborder="0" style="z-index: -1; position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; border: none;" src="./finalscript_files/saved_resource.html"></iframe><div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;"><a target="_blank" rel="noopener" href="https://maps.google.com/maps?ll=42.251318,-71.823045&amp;z=17&amp;hl=en-US&amp;gl=US&amp;mapclient=apiv3" title="Open this area in Google Maps (opens a new window)" style="position: static; overflow: visible; float: none; display: inline;"><div style="width: 66px; height: 26px; cursor: pointer;"><img alt="" src="./finalscript_files/google_white5_hdpi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 66px; height: 26px; user-select: none; border: 0px; padding: 0px; margin: 0px;"></div></a></div><div style="background-color: white; padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto, Arial, sans-serif; color: rgb(34, 34, 34); box-sizing: border-box; box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; z-index: 10000002; display: none; width: 300px; height: 180px; position: absolute; left: 213px; top: 285px;"><div style="padding: 0px 0px 10px; font-size: 16px; box-sizing: border-box;">Map Data</div><div style="font-size: 13px;">Map data ©2019 Google</div><button draggable="false" title="Close" aria-label="Close" type="button" class="gm-ui-hover-effect" style="background: none; display: block; border: 0px; margin: 0px; padding: 0px; position: absolute; cursor: pointer; user-select: none; top: 0px; right: 0px; width: 37px; height: 37px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224px%22%20height%3D%2224px%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%23000000%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M19%206.41L17.59%205%2012%2010.59%206.41%205%205%206.41%2010.59%2012%205%2017.59%206.41%2019%2012%2013.41%2017.59%2019%2019%2017.59%2013.41%2012z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="pointer-events: none; display: block; width: 13px; height: 13px; margin: 12px;"></button></div><div class="gmnoprint" style="z-index: 1000001; position: absolute; right: 71px; bottom: 0px; width: 121px;"><div draggable="false" class="gm-style-cc" style="user-select: none; height: 14px; line-height: 14px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; box-sizing: border-box; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a style="text-decoration: none; cursor: pointer; display: none;">Map Data</a><span>Map data ©2019 Google</span></div></div></div><div class="gmnoscreen" style="position: absolute; right: 0px; bottom: 0px;"><div style="font-family: Roboto, Arial, sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);">Map data ©2019 Google</div></div><div class="gmnoprint gm-style-cc" draggable="false" style="z-index: 1000001; user-select: none; height: 14px; line-height: 14px; position: absolute; right: 0px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; box-sizing: border-box; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a href="https://www.google.com/intl/en-US_US/help/terms_maps.html" target="_blank" rel="noopener" style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);">Terms of Use</a></div></div><button draggable="false" title="Toggle fullscreen view" aria-label="Toggle fullscreen view" type="button" class="gm-control-active gm-fullscreen-control" style="background: none rgb(255, 255, 255); border: 0px; margin: 10px; padding: 0px; position: absolute; cursor: pointer; user-select: none; border-radius: 2px; height: 40px; width: 40px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; overflow: hidden; top: 0px; right: 0px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%20018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23666%22%20d%3D%22M0%2C0v2v4h2V2h4V0H2H0z%20M16%2C0h-4v2h4v4h2V2V0H16z%20M16%2C16h-4v2h4h2v-2v-4h-2V16z%20M2%2C12H0v4v2h2h4v-2H2V12z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23333%22%20d%3D%22M0%2C0v2v4h2V2h4V0H2H0z%20M16%2C0h-4v2h4v4h2V2V0H16z%20M16%2C16h-4v2h4h2v-2v-4h-2V16z%20M2%2C12H0v4v2h2h4v-2H2V12z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23111%22%20d%3D%22M0%2C0v2v4h2V2h4V0H2H0z%20M16%2C0h-4v2h4v4h2V2V0H16z%20M16%2C16h-4v2h4h2v-2v-4h-2V16z%20M2%2C12H0v4v2h2h4v-2H2V12z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"></button><div style="padding: 5px; height: 50px; width: 50px; z-index: 0; position: absolute; top: 0px; left: 0px;"><div title="Click to set the map to Home" style="background-color: white; border-style: solid; border-width: 1px; cursor: pointer; text-align: center;"><div style="font-family: Arial, sans-serif; font-size: 12px; padding-left: 4px; padding-right: 4px;"><b>HOME</b></div></div></div><div draggable="false" class="gm-style-cc" style="user-select: none; height: 14px; line-height: 14px; display: none; position: absolute; right: 0px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; box-sizing: border-box; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a target="_blank" rel="noopener" title="Report errors in the road map or imagery to Google" href="https://www.google.com/maps/@42.251318,-71.823045,17z/data=!10m1!1e1!12b1?source=apiv3&amp;rapsrc=apiv3" style="font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;">Report a map error</a></div></div><div class="gmnoprint gm-bundled-control gm-bundled-control-on-bottom" draggable="false" controlwidth="40" controlheight="81" style="margin: 10px; user-select: none; position: absolute; bottom: 95px; right: 40px;"><div class="gmnoprint" controlwidth="40" controlheight="81" style="position: absolute; left: 0px; top: 0px;"><div draggable="false" style="user-select: none; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; background-color: rgb(255, 255, 255); width: 40px; height: 81px;"><button draggable="false" title="Zoom in" aria-label="Zoom in" type="button" class="gm-control-active" style="background: none; display: block; border: 0px; margin: 0px; padding: 0px; position: relative; cursor: pointer; user-select: none; overflow: hidden; width: 40px; height: 40px; top: 0px; left: 0px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpolygon%20fill%3D%22%23666%22%20points%3D%2218%2C7%2011%2C7%2011%2C0%207%2C0%207%2C7%200%2C7%200%2C11%207%2C11%207%2C18%2011%2C18%2011%2C11%2018%2C11%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpolygon%20fill%3D%22%23333%22%20points%3D%2218%2C7%2011%2C7%2011%2C0%207%2C0%207%2C7%200%2C7%200%2C11%207%2C11%207%2C18%2011%2C18%2011%2C11%2018%2C11%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpolygon%20fill%3D%22%23111%22%20points%3D%2218%2C7%2011%2C7%2011%2C0%207%2C0%207%2C7%200%2C7%200%2C11%207%2C11%207%2C18%2011%2C18%2011%2C11%2018%2C11%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"></button><div style="position: relative; overflow: hidden; width: 30px; height: 1px; margin: 0px 5px; background-color: rgb(230, 230, 230); top: 0px;"></div><button draggable="false" title="Zoom out" aria-label="Zoom out" type="button" class="gm-control-active" style="background: none; display: block; border: 0px; margin: 0px; padding: 0px; position: relative; cursor: pointer; user-select: none; overflow: hidden; width: 40px; height: 40px; top: 0px; left: 0px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23666%22%20d%3D%22M0%2C7h18v4H0V7z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23333%22%20d%3D%22M0%2C7h18v4H0V7z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23111%22%20d%3D%22M0%2C7h18v4H0V7z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"></button></div></div><div class="gmnoprint" controlwidth="40" controlheight="40" style="display: none; position: absolute;"><div style="width: 40px; height: 40px;"><button draggable="false" title="Rotate map 90 degrees" aria-label="Rotate map 90 degrees" type="button" class="gm-control-active" style="background: none rgb(255, 255, 255); display: none; border: 0px; margin: 0px 0px 32px; padding: 0px; position: relative; cursor: pointer; user-select: none; width: 40px; height: 40px; top: 0px; left: 0px; overflow: hidden; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2222%22%20viewBox%3D%220%200%2024%2022%22%3E%0A%20%20%3Cpath%20fill%3D%22%23666%22%20fill-rule%3D%22evenodd%22%20d%3D%22M20%2010c0-5.52-4.48-10-10-10s-10%204.48-10%2010v5h5v-5c0-2.76%202.24-5%205-5s5%202.24%205%205v5h-4l6.5%207%206.5-7h-4v-5z%22%20clip-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2222%22%20viewBox%3D%220%200%2024%2022%22%3E%0A%20%20%3Cpath%20fill%3D%22%23333%22%20fill-rule%3D%22evenodd%22%20d%3D%22M20%2010c0-5.52-4.48-10-10-10s-10%204.48-10%2010v5h5v-5c0-2.76%202.24-5%205-5s5%202.24%205%205v5h-4l6.5%207%206.5-7h-4v-5z%22%20clip-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2222%22%20viewBox%3D%220%200%2024%2022%22%3E%0A%20%20%3Cpath%20fill%3D%22%23111%22%20fill-rule%3D%22evenodd%22%20d%3D%22M20%2010c0-5.52-4.48-10-10-10s-10%204.48-10%2010v5h5v-5c0-2.76%202.24-5%205-5s5%202.24%205%205v5h-4l6.5%207%206.5-7h-4v-5z%22%20clip-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px;"></button><button draggable="false" title="Tilt map" aria-label="Tilt map" type="button" class="gm-tilt gm-control-active" style="background: none rgb(255, 255, 255); display: block; border: 0px; margin: 0px; padding: 0px; position: relative; cursor: pointer; user-select: none; width: 40px; height: 40px; top: 0px; left: 0px; overflow: hidden; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2018%2016%22%3E%0A%20%20%3Cpath%20fill%3D%22%23666%22%20d%3D%22M0%2C16h8V9H0V16z%20M10%2C16h8V9h-8V16z%20M0%2C7h8V0H0V7z%20M10%2C0v7h8V0H10z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2018%2016%22%3E%0A%20%20%3Cpath%20fill%3D%22%23333%22%20d%3D%22M0%2C16h8V9H0V16z%20M10%2C16h8V9h-8V16z%20M0%2C7h8V0H0V7z%20M10%2C0v7h8V0H10z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="width: 18px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2018%2016%22%3E%0A%20%20%3Cpath%20fill%3D%22%23111%22%20d%3D%22M0%2C16h8V9H0V16z%20M10%2C16h8V9h-8V16z%20M0%2C7h8V0H0V7z%20M10%2C0v7h8V0H10z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="width: 18px;"></button></div></div></div></div></div><div style="background-color: white; font-weight: 500; font-family: Roboto, sans-serif; padding: 15px 25px; box-sizing: border-box; top: 5px; border: 1px solid rgba(0, 0, 0, 0.12); border-radius: 5px; left: 50%; max-width: 375px; position: absolute; transform: translateX(-50%); width: calc(100% - 10px); z-index: 1;"><div><img alt="" src="./finalscript_files/google_gray.svg" draggable="false" style="padding: 0px; margin: 0px; border: 0px; height: 17px; vertical-align: middle; width: 52px; user-select: none;"></div><div style="line-height: 20px; margin: 15px 0px;"><span style="color: rgba(0, 0, 0, 0.87); font-size: 14px;">This page can't load Google Maps correctly.</span></div><table style="width: 100%;"><tr><td style="line-height: 16px; vertical-align: middle;"><a href="https://developers.google.com/maps/documentation/javascript/error-messages?utm_source=maps_js&amp;utm_medium=degraded&amp;utm_campaign=keyless#api-key-and-billing-errors" target="_blank" rel="noopener" style="color: rgba(0, 0, 0, 0.54); font-size: 12px;">Do you own this website?</a></td><td style="text-align: right;"><button class="dismissButton">OK</button></td></tr></table></div></div>
+
+
+<div id="footer">
+<a id="bottom" href="http://web.clarku.edu/policies/policyPDF.cfm?%20title=" privacy="" policy"="">Privacy Policy |</a>
+<a id="bottom" href="http://web.clarku.edu/policies/index.cfm?%20title=" university="" police"="">University Policies |</a>
+<a id="bottom" href="http://www.clarku.edu/contact.cfm">Contact Us</a>
+
+</div>
+</div>
+</div>
+
+</body></html>
