@@ -11,6 +11,33 @@ body {
 .topspace {
   margin-top: 20px;
 }
+
+
+
+
+:root {
+  --mainColor: #3aafa9;
+}
+
+
+a.highlight {
+  background:
+     linear-gradient(
+       to bottom, var(--mainColor) 0%,
+       var(--mainColor) 100%
+     );
+    background-position: 0 100%;
+    background-repeat: repeat-x;
+    background-size: 4px 4px;
+  color: #000;
+  text-decoration: none;
+  transition: background-size .2s;
+}
+
+a.highlight:hover {
+  background-size: 4px 50px;
+}
+
 /*********************************************************************
 
 
@@ -74,7 +101,7 @@ body {
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
   color: #feffff;
-  background-color: #3aafa9;
+  /*background-color: #3aafa9;*/
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
@@ -199,12 +226,12 @@ h5 {
   font-size: 20px;
   font-size: 1.25rem;
 }
-a {
+/*a {
   color: #2b7a78;
 }
 a:hover {
   color: #3aafa9;
-}
+}*/
 
 
 .lead {
